@@ -6,13 +6,17 @@ nav {
   align-items: center;
   color: #fff;
 }
-ul {
-}
 
 nav ul.nav-items {
   display: flex;
 }
 nav .logo,
 nav ul.nav-items li a {
-  padding: 20px 30px;
+  margin: 20px 30px;
+}
+nav ul.nav-items li a:active {
+  border-bottom: 1px solid #fff;
+}
+nav ul.nav-items li a.active {
+  border-bottom: 1px solid #fff;
 }

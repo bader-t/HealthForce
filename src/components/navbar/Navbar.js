@@ -9,10 +9,16 @@ const Navbar = () => (
         </div>
         <ul className="nav-items">
             <li>
-                <a href="#">S'authentifier</a>
+                <a href="/">Acceuil</a>
             </li>
             <li>
-                <a href="#">S'inscrire</a>
+                <a href="/">Contact</a>
+            </li>
+            <li>
+                <a className="active" href="/">S'authentifier</a>
+            </li>
+            <li>
+                <a href="/">S'inscrire</a>
             </li>
         </ul>
     </nav>
