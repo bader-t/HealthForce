@@ -10,14 +10,9 @@ const Question = () => (
                 <h1>Poser une question</h1>
                 <hr />
                 <form className="question-form">
-                    <input type="email" placeholder="email.." name="email" required />
-                    <input
-                        type="password"
-                        placeholder="mot de passe.."
-                        name="mdp"
-                        required
-                    />
-                    <input type="submit" value="S'authentifier" />
+                    <input type="text" placeholder="question.." name="question" required />
+
+                    <input type="submit" value="Envoyer" />
                 </form>
             </div>
         </div>

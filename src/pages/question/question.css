@@ -4,3 +4,40 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.question-form input {
+  height: 46px;
+
+  background: none;
+  outline: none;
+  width: 100%;
+  border: 1px solid #fff;
+  margin: 20px;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 10px;
+  padding-left: 14px;
+}
+.question-form input:not(input[type="submit"]) {
+  width: calc(100% - 14px);
+}
+
+.question-form ::placeholder {
+  color: #fff;
+  font-size: 18px;
+}
+
+.question-form input[type="submit"] {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.03);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.question-form input[type="submit"]:hover {
+  transition: all 0.3s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.237);
+}
