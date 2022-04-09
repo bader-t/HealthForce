@@ -23,3 +23,8 @@ ul {
 .bg-1 {
   background-image: url("../public/assets/bg_1.jpeg");
 }
+.bg-2 {
+  background-image: url("../public/assets/bg_2.jpeg");
+  background-position: center;
+  background-size: cover;
+}

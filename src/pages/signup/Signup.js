@@ -4,7 +4,7 @@ import "./signup.css";
 
 const Signup = () => (
   <div className="container bg-1">
-    <Navbar active="signup"></Navbar>
+    <Navbar active="signup" status="unauthentified"></Navbar>
 
     <div className="wrapper">
       <div className="card">

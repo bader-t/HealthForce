@@ -4,7 +4,7 @@ import "./login.css";
 
 const Login = () => (
   <div className="container bg-1">
-    <Navbar active="login"></Navbar>
+    <Navbar active="login" status="unauthentified"></Navbar>
     <div className="wrapper">
       <div className="card">
         <h1>S'authentifier</h1>
