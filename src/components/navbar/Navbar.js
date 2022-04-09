@@ -34,7 +34,7 @@ const authentified = [
   },
   {
     label: "Rendez-vous",
-    path: "appointment",
+    path: "rdv",
   },
   {
     label: "Hakim Alaoui",
