@@ -11,12 +11,12 @@ nav ul.nav-items {
   display: flex;
 }
 nav .logo,
-nav ul.nav-items li a {
+nav ul.nav-items li .nav-item {
   margin: 20px 30px;
 }
-nav ul.nav-items li a:active {
+nav ul.nav-items li .nav-item:active {
   border-bottom: 1px solid #fff;
 }
-nav ul.nav-items li a.active {
+nav ul.nav-items li .nav-item.active {
   border-bottom: 1px solid #fff;
 }

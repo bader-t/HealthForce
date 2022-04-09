@@ -1,10 +1,19 @@
 import React from "react";
-import { Acceuil } from "./pages";
+import { Acceuil, Login } from "./pages";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 
 
 const App = () => (
-  <Acceuil></Acceuil>
+  <div>
+    <Router>
+      <Routes>
+        <Route oute path="/" element={<Acceuil />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+      </Routes>
+    </Router>
+  </div>
+
 );
 
 
