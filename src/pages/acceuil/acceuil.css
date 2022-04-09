@@ -1,0 +1,23 @@
+.acceuil {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: calc(100% - 40px);
+  height: calc(100% - 70px);
+}
+
+.acceuil .btns a {
+  background-color: #fff;
+  color: #969393;
+  width: 40%;
+  padding: 10px;
+  border-radius: 7px;
+  text-align: center;
+}
+.acceuil p {
+  color: #fff;
+}
+.acceuil .btns {
+  display: flex;
+  justify-content: space-between;
+}

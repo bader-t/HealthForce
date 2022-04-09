@@ -1,10 +1,10 @@
 import React from "react";
-import { Login } from "./pages";
+import { Acceuil } from "./pages";
 
 
 
 const App = () => (
-  <Login></Login>
+  <Acceuil></Acceuil>
 );
 
 
