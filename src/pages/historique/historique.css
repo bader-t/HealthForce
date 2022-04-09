@@ -1,0 +1,12 @@
+.card-Historique {
+  width: 40%;
+  background-color: rgba(0, 0, 0, 0.15);
+  padding: 40px;
+  border-radius: 15px;
+}
+.card-Historique h1 {
+  color: #fff;
+}
+.card-Historique hr {
+  border: 0.5px solid #fff;
+}
