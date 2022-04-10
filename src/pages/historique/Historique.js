@@ -10,7 +10,7 @@ const visites = [
     id: 0,
     conseils: [
       "chreeb dwaak amskhot lwalidin",
-      "lbess mezian rah fr3eek lberd",
+      "bla bla bla",
       "g3eed l2erd chwiya",
     ],
   },
@@ -19,11 +19,7 @@ const visites = [
     description:
       "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte...",
     id: 1,
-    conseils: [
-      "chreeb dwaak amskhot lwalidin",
-      "lbess mezian rah fr3eek lberd",
-      "g3eed l2erd chwiya",
-    ],
+    conseils: ["chreeb dwaak amskhot lwalidin", "g3eed l2erd chwiya"],
   },
   {
     date: "Mardi 1 Avril 2022",
@@ -41,33 +37,21 @@ const visites = [
     description:
       "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte...",
     id: 3,
-    conseils: [
-      "chreeb dwaak amskhot lwalidin",
-      "lbess mezian rah fr3eek lberd",
-      "g3eed l2erd chwiya",
-    ],
+    conseils: ["g3eed l2erd chwiya"],
   },
   {
     date: "mardi 4 janvier 2023",
     description:
       "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte...",
     id: 4,
-    conseils: [
-      "chreeb dwaak amskhot lwalidin",
-      "lbess mezian rah fr3eek lberd",
-      "g3eed l2erd chwiya",
-    ],
+    conseils: ["lbess mezian rah fr3eek lberd", "g3eed l2erd chwiya"],
   },
   {
     date: "Jeudi 11 mars 2023",
     description:
       "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte...",
     id: 5,
-    conseils: [
-      "chreeb dwaak amskhot lwalidin",
-      "lbess mezian rah fr3eek lberd",
-      "g3eed l2erd chwiya",
-    ],
+    conseils: ["chreeb dwaak amskhot lwalidin"],
   },
 ];
 
