@@ -2,6 +2,7 @@
   background-color: rgba(0, 0, 0, 0.15);
   padding: 40px;
   border-radius: 15px;
+  margin:0 20px;
 }
 .visite-container{
   display: flex;
@@ -21,4 +22,26 @@
   flex-direction: column;
   overflow: scroll;
 }
+.conteneur-visite{
+ 
+    border:solid 1px white;
+    border-radius:5px;
+    margin-bottom: 10px;
+    display:flex ;
+    flex-direction: column;
 
+}
+.button-container{
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 5px;
+}
+.detail-button{
+  background-color: rgba(2550, 255, 255, 0.5);
+  height: 30px;
+  width: 140px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  }

@@ -4,4 +4,23 @@
     width:60%;
     height: 400px;
     margin-left: 10px;
+    padding:0 10px;
+}
+.header-visite{
+    display: flex;
+    justify-content: flex-end;
+}
+.footer-visite{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 40px;
+    
+}
+.facture-button{
+    background-color: rgba(2550, 255, 255, 0.5);
+    height: 30px;
+    width: 210px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
