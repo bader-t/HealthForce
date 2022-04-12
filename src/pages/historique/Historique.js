@@ -28,7 +28,7 @@ const visites = [
     id: 2,
     conseils: [
       "chreeb dwaak amskhot lwalidin",
-      "lbess mezian rah fr3eek lberd",
+      "lbess mezian rah derbek lberd",
       "g3eed l2erd chwiya",
     ],
   },
