@@ -71,7 +71,7 @@ function Historique() {
             <div className="list-of-visites">
               {visites.map((item) => {
                 return (
-                  <div className="conteneur-visite">
+                  <div className="conteneur-visite" key={item.id}>
                     <Visite
                       date={item.date}
                       description={item.description}

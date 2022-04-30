@@ -1,41 +1,113 @@
-import React from "react";
+import { React, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Navbar } from "../../components";
+import axios from "axios";
 import "./signup.css";
 
-const Signup = () => (
-  <div className="container bg-1">
-    <Navbar active="signup" status="unauthentified"></Navbar>
+function Signup() {
+  const [client, setUser] = useState({
+    nom: "",
+    prenom: "",
+    email: "",
+    telephone: "",
+    date: "",
+    password: "",
+    genre: "",
+  });
+  const navigate = useNavigate();
+  function changeData(e) {
+    setUser({ ...client, [e.target.name]: e.target.value });
+    console.log(client);
+  }
+  function onSingUp() {
+    axios.post("http://localhost:8082/addClient", client).then((result) => {
+      console.log(result);
+      if (result.data) {
+        navigate("/login");
+      }
+    });
+  }
 
-    <div className="wrapper">
-      <div className="card">
-        <h1>S'inscrire</h1>
-        <hr />
-        <form className="signup-form">
+  return (
+    <div className="container bg-1">
+      <Navbar active="signup" status="unauthentified"></Navbar>
+
+      <div className="wrapper">
+        <div className="card">
+          <h1>S'inscrire</h1>
+          <hr />
           <div className="row">
-            <input type="text" name="name" placeholder="nom.." />
-            <input type="text" name="prenom" placeholder="prenom.." />
+            <input
+              className="login-input"
+              type="text"
+              name="nom"
+              placeholder="nom.."
+              onChange={changeData}
+            />
+            <input
+              className="login-input"
+              type="text"
+              name="prenom"
+              placeholder="prenom.."
+              onChange={changeData}
+            />
           </div>
           <div className="row">
-            <input type="email" name="name" placeholder="email.." />
-            <input type="number" name="prenom" placeholder="telephone.." />
+            <input
+              className="login-input"
+              type="email"
+              name="email"
+              placeholder="email.."
+              onChange={changeData}
+            />
+            <input
+              className="login-input"
+              type="text"
+              name="telephone"
+              placeholder="telephone.."
+              onChange={changeData}
+            />
           </div>
           <div className="row">
-            <input type="date" name="date" placeholder="20/20/2020" />
-            <input type="text" name="ville" placeholder="ville.." />
+            <input
+              className="login-input"
+              type="date"
+              name="date"
+              onChange={changeData}
+            />
+            <input
+              className="login-input"
+              type="password"
+              name="password"
+              placeholder="password.."
+              onChange={changeData}
+            />
           </div>
 
           <div className="row-radio">
-            <input type="radio" name="gender" value="femme" />
+            <input
+              type="radio"
+              name="genre"
+              value="femme"
+              onChange={changeData}
+            />
             Femme
-            <input type="radio" name="gender" value="homme" />
+            <input
+              type="radio"
+              name="genre"
+              value="homme"
+              onChange={changeData}
+            />
             Homme
           </div>
 
-          <input type="submit" value="S'inscrire" />
-        </form>
+          <button className="submit-login" onClick={onSingUp}>
+            S'inscrire
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+}
 
 export default Signup;

@@ -14,7 +14,7 @@ function Rdv() {
   const [value, onChange] = useState(new Date());
   return (
     <div className="container bg-1">
-      <Navbar active="rdv" status="unauthentified"></Navbar>
+      <Navbar active="rdv" status="authentified"></Navbar>
       <div>
         <div className="card">
           <h1>We early give best care to your health</h1>
@@ -24,6 +24,7 @@ function Rdv() {
             tileDisabled={({ date }) =>
               dates.some(
                 (disabledDate) =>
+                  /*il faut ajouter les jours feriers*/
                   (date.getFullYear() === disabledDate.getFullYear() &&
                     date.getMonth() === disabledDate.getMonth() &&
                     date.getDate() === disabledDate.getDate()) ||

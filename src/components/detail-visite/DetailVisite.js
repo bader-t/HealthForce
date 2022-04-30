@@ -11,7 +11,7 @@ const DetailVisite = (props) => (
       <div>
         <h3>Conseils:</h3>
         {props.consiels.map((item) => (
-          <li>{item}</li>
+          <li key={item}>{item}</li>
         ))}
       </div>
     </div>
