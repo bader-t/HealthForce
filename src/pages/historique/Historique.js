@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar, Visite, DetailVisite } from "../../components";
 import "./historique.css";
 import { useState } from "react";
+
 const visites = [
   {
     date: "Jeudi 31 mars 2022",

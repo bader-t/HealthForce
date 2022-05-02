@@ -6,3 +6,4 @@ export { default as Home } from "./home/Home";
 export { default as Question } from "./question/Question";
 export { default as Historique } from "./historique/Historique";
 export { default as SecureRoute } from "./login/Login";
+export { default as Contact } from "./contact/contact";
