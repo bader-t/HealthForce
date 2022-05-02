@@ -1,0 +1,21 @@
+.ContainerCard {
+  background-color: #fff;
+  min-width: 300px;
+  height: 500px;
+  margin: 0px 10px;
+  padding: 10px 20px;
+  box-shadow: 3px 5px 6px grey;
+  display: flex;
+  flex-flow: column;
+  justify-content: start;
+}
+
+h3 {
+  color: #1e4d50;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+img {
+  width: 100px;
+}
