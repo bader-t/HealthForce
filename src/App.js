@@ -7,7 +7,7 @@ import {
   Signup,
   Historique,
   Question,
-  Contact
+  Contact, Profile
 } from "./pages";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -51,6 +51,14 @@ const App = () => (
           element={
             <RequireAuth>
               <Question />
+            </RequireAuth>
+          }
+        ></Route>
+        <Route
+          path="/profile"
+          element={
+            <RequireAuth>
+              <Profile />
             </RequireAuth>
           }
         ></Route>

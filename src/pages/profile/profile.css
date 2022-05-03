@@ -1,0 +1,32 @@
+.profile{
+    margin: 20px 200px;
+}
+.col{
+    display:flex;
+}
+.second-col{
+    margin-left:100px;
+}
+.row{
+    margin-bottom:30px;
+}
+b{
+    margin-left:20px;
+}
+
+.card-info {
+  min-height: 250px;
+  min-width:70%;
+  box-shadow: 3px 5px 6px grey;
+  background-color: white;
+  padding : 10px 20px;
+  margin-bottom:30px;
+}
+
+h2 {
+  color: #1e4d50;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  border-bottom: 1px solid #1e4d50;
+  padding-bottom: 5px;
+}
