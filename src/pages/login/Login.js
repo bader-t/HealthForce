@@ -1,29 +1,53 @@
 import { React, useState } from "react";
-
+import { useNavigate } from 'react-router-dom';
 import { Navbar } from "../../components";
-import axios from "axios";
-import { Route, useNavigate } from "react-router-dom";
-import { useAuth } from "../../components/authentification/Auth";
 import "./login.css";
+import AuthService from "../../services/auth.service";
+
 
 function Login() {
-  const [loginData, setLoginData] = useState({ username: "", password: "" });
-  const navigate = useNavigate();
-  const auth = useAuth();
+  let navigate = useNavigate();
 
-  function changeLogInData(e) {
-    setLoginData({ ...loginData, [e.target.name]: e.target.value });
-  }
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
-  function onLogin() {
-    axios.post("http://localhost:8082/login", loginData).then((result) => {
-      console.log(result);
-      if (result.data) {
-        auth.login(loginData.username);
+  const onChangeUsername = (e) => {
+    const username = e.target.value;
+    setUsername(username);
+  };
+
+  const onChangePassword = (e) => {
+    const password = e.target.value;
+    setPassword(password);
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+
+    setMessage("");
+
+    AuthService.login(username, password).then(
+      () => {
         navigate("/home");
-      } else alert("wrong login");
-    });
-  }
+        window.location.reload();
+      },
+      (error) => {
+        const resMessage =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+        setMessage(resMessage);
+
+
+      }
+    );
+  };
+  console.log(message);
+
 
   return (
     <div className="container bg-1">
@@ -35,10 +59,10 @@ function Login() {
 
           <input
             type="text"
-            placeholder="email.."
+            placeholder="nom complet.."
             name="username"
-            value={loginData.username}
-            onChange={changeLogInData}
+            value={username}
+            onChange={onChangeUsername}
             className="login-input"
             required
           />
@@ -46,13 +70,13 @@ function Login() {
             type="password"
             placeholder="mot de passe.."
             name="password"
-            value={loginData.password}
-            onChange={changeLogInData}
+            value={password}
+            onChange={onChangePassword}
             className="login-input"
             required
           />
 
-          <button onClick={onLogin} className="submit-login">
+          <button onClick={handleLogin} className="submit-login">
             S'authentifier
           </button>
         </div>

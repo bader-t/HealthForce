@@ -1,32 +1,74 @@
 import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Navbar } from "../../components";
-import axios from "axios";
+import AuthService from "../../services/auth.service";
 import "./signup.css";
 
 function Signup() {
-  const [client, setUser] = useState({
-    nom: "",
-    prenom: "",
-    email: "",
-    telephone: "",
-    date: "",
-    password: "",
-    genre: "",
-  });
-  const navigate = useNavigate();
-  function changeData(e) {
-    setUser({ ...client, [e.target.name]: e.target.value });
-    console.log(client);
-  }
-  function onSingUp() {
-    axios.post("http://localhost:8082/addClient", client).then((result) => {
-      console.log(result);
-      if (result.data) {
+
+  let navigate = useNavigate();
+
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [telephone, setTelephone] = useState("");
+  const [genre, setGenre] = useState("");
+  const [date, setDate] = useState("");
+  const [message, setMessage] = useState("");
+
+  const onChangeUsername = (e) => {
+    const username = e.target.value;
+    setUsername(username);
+  };
+
+  const onChangeEmail = (e) => {
+    const email = e.target.value;
+    setEmail(email);
+  };
+  const onChangeTelephone = (e) => {
+    const telephone = e.target.value;
+    setTelephone(telephone);
+  };
+  const onChangeGenre = (e) => {
+    const genre = e.target.value;
+    setGenre(genre);
+  };
+  const onChangeDate = (e) => {
+    const date = e.target.value;
+    setDate(date);
+  };
+  const onChangePassword = (e) => {
+    const password = e.target.value;
+    setPassword(password);
+  };
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+
+    setMessage("");
+
+
+    AuthService.register(username, email, password, telephone, date, genre).then(
+      (response) => {
+        setMessage(response.data.message);
         navigate("/login");
+        window.location.reload();
+      },
+      (error) => {
+        const resMessage =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+
+        setMessage(resMessage);
+
       }
-    });
-  }
+    );
+
+  };
+  console.log(message);
 
   return (
     <div className="container bg-1">
@@ -40,17 +82,11 @@ function Signup() {
             <input
               className="login-input"
               type="text"
-              name="nom"
-              placeholder="nom.."
-              onChange={changeData}
+              name="username"
+              placeholder="nom complet.."
+              onChange={onChangeUsername}
             />
-            <input
-              className="login-input"
-              type="text"
-              name="prenom"
-              placeholder="prenom.."
-              onChange={changeData}
-            />
+
           </div>
           <div className="row">
             <input
@@ -58,14 +94,14 @@ function Signup() {
               type="email"
               name="email"
               placeholder="email.."
-              onChange={changeData}
+              onChange={onChangeEmail}
             />
             <input
               className="login-input"
               type="text"
               name="telephone"
               placeholder="telephone.."
-              onChange={changeData}
+              onChange={onChangeTelephone}
             />
           </div>
           <div className="row">
@@ -73,14 +109,14 @@ function Signup() {
               className="login-input"
               type="date"
               name="date"
-              onChange={changeData}
+              onChange={onChangeDate}
             />
             <input
               className="login-input"
               type="password"
               name="password"
               placeholder="password.."
-              onChange={changeData}
+              onChange={onChangePassword}
             />
           </div>
 
@@ -89,19 +125,19 @@ function Signup() {
               type="radio"
               name="genre"
               value="femme"
-              onChange={changeData}
+              onChange={onChangeGenre}
             />
             Femme
             <input
               type="radio"
               name="genre"
               value="homme"
-              onChange={changeData}
+              onChange={onChangeGenre}
             />
             Homme
           </div>
 
-          <button className="submit-login" onClick={onSingUp}>
+          <button className="submit-login" onClick={handleRegister}>
             S'inscrire
           </button>
         </div>
