@@ -1,0 +1,81 @@
+.subtitle{
+  color: white;
+}
+
+.titles {
+  display: flex;
+  justify-content: space-around;
+}
+
+.row-radioRdv {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+.column-2 {
+  width: 400px;
+  height:auto;
+}
+
+.Rdv-form input {
+  height: 180px;
+
+  background: none;
+  outline: none;
+  width: 100%;
+  border: 1px solid #fff;
+  margin: 20px;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 10px;
+  padding-left: 14px;
+  
+}
+
+.Rdv-form ::placeholder {
+  color: #fff;
+  font-size: 18px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.cardRdv {
+  width: 80%;
+  background-color: rgba(0, 0, 0, 0.15);
+  padding: 40px;
+  border-radius: 15px;
+}
+.cardRdv h1 {
+  color: #fff;
+}
+.cardRdv hr {
+  border: 0.5px solid #fff;
+}
+.wrapperRdv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: calc(100% - 70px);
+}
+.btns{
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  padding: 10px 20px;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.03);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out
+}
+.btns:hover {
+  transition: all 0.3s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.237);
+}

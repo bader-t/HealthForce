@@ -16,7 +16,7 @@ const Acceuil = () => (
         </p>
         <div className="btns">
           <Link to="/signup">Rendez-vous</Link>
-          <a href="/">Services</a>
+          <Link to="/contact">Services</Link>
         </div>
       </div>
     </div>
