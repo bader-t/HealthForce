@@ -1,7 +1,8 @@
 import React from "react";
 import { Navbar, Visite, DetailVisite } from "../../components";
 import "./historique.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const visites = [
   {
@@ -57,6 +58,49 @@ const visites = [
 ];
 
 function Historique() {
+  useEffect(() => {
+    var axios = require("axios");
+    var data =
+      "grant_type=password&client_id=3MVG9DREgiBqN9WldxY6Si.pmECMxRaJPIwYtCUX49AMTbWpVlPj4vUzTHRKHQdpj7k9_bvI5eCUXoxDdFjy5&client_secret=D9B701D4A2BD6510AB7BC6B1AE11B688A7A63F6F451048450ECB57187CA44AAD\r\n&username=healthforce8@gmail.com&password=healthforce@@1Bf6YIt9844TiLMt2t2V81JQh\r\n";
+
+    var config = {
+      method: "post",
+      url: "https://login.salesforce.com/services/oauth2/token",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data.access_token));
+        var tocken = response.data.access_token;
+        var axios = require("axios");
+        var FormData = require("form-data");
+        var data = new FormData();
+        var config = {
+          method: "get",
+          url: "https://healthforce4-dev-ed.my.salesforce.com/services/apexrest/visites",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + tocken,
+          },
+          data: data,
+        };
+
+        axios(config)
+          .then(function (response) {
+            console.log(JSON.stringify(response.data));
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
   const [idVisite, handleChange] = useState(1);
   const visiteToShow = visites.filter((item) => item.id === idVisite);
 
