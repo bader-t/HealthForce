@@ -1,25 +1,36 @@
 .question-form {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-evenly;
+  align-items: start;
 }
 
-.question-form input {
-  height: 46px;
+hr{
+    margin-bottom: 25px;
 
+}
+h1{
+   margin-bottom: 5px;
+}
+
+.question-form input,textarea,select {
   background: none;
   outline: none;
   width: 100%;
   border: 1px solid #fff;
-  margin: 20px;
   color: #fff;
   font-size: 18px;
   border-radius: 10px;
   padding-left: 14px;
+  overflow:hidden;
 }
+.question-form select {
+  height: 46px;
+  width: 50%;
+}
+
 .question-form input:not(input[type="submit"]) {
-  width: calc(100% - 14px);
+  height: 46px;
 }
 
 .question-form ::placeholder {
@@ -28,6 +39,7 @@
 }
 
 .question-form input[type="submit"] {
+  height: 46px;
   background-color: rgba(255, 255, 255, 0.2);
   border: none;
   color: #fff;
@@ -40,4 +52,9 @@
 .question-form input[type="submit"]:hover {
   transition: all 0.3s ease-in-out;
   background-color: rgba(255, 255, 255, 0.237);
+}
+
+label{
+  color:#fff;
+  margin-bottom: 5px;
 }
