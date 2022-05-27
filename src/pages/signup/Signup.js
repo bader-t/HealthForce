@@ -44,10 +44,7 @@ function Signup() {
 
   const handleRegister = (e) => {
     e.preventDefault();
-
     setMessage("");
-
-
     AuthService.register(username, email, password, telephone, date, genre).then(
       (response) => {
         setMessage(response.data.message);
@@ -74,16 +71,26 @@ function Signup() {
     <div className="container bg-1">
       <Navbar active="signup" status="unauthentified"></Navbar>
 
-      <div className="wrapper">
+      <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" className="wrapper">
         <div className="card">
           <h1>S'inscrire</h1>
           <hr />
+          <input type="hidden" name="oid" value="00D8d000004IxgI" />
+          <input type="hidden" name="retURL" value="http://127.0.0.1:3000/login" />
           <div className="row">
+
             <input
               className="login-input"
               type="text"
-              name="username"
-              placeholder="nom complet.."
+              name="last_name"
+              placeholder="nom.."
+              onChange={onChangeUsername}
+            />
+            <input
+              className="login-input"
+              type="text"
+              name="first_name"
+              placeholder="prénom.."
               onChange={onChangeUsername}
             />
 
@@ -136,12 +143,11 @@ function Signup() {
             />
             Homme
           </div>
+          <input name="00N8d00000CdSbQ" type="date" />
 
-          <button className="submit-login" onClick={handleRegister}>
-            S'inscrire
-          </button>
+          <input className="submit-login" name="submit" type="submit" value="S'inscrire" />
         </div>
-      </div>
+      </form>
     </div>
   );
 }

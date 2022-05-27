@@ -15,29 +15,29 @@ const Profile = () => {
 
           <div className="col">
             <div className="First-col">
-              <div className="row">
+              <div className="prow">
                 Nom complet : <b>{user.username}</b>
                 <br />
               </div>
-              <div className="row">
+              <div className="prow">
                 Date de naissance : <b>{user.date}</b>
                 <br />
               </div>
-              <div className="row">
+              <div className="prow">
                 Sexe : <b>{user.genre}</b>
                 <br />
               </div>
             </div>
             <div className="second-col">
-              <div className="row">
+              <div className="prow">
                 Telephone : <b>{user.telephone}</b>
                 <br />
               </div>
-              <div className="row">
+              <div className="prow">
                 Adress : <b>Marrakech-Guiliz</b>
                 <br />
               </div>
-              <div className="row">
+              <div className="prow">
                 CIN : <b>A456739</b>
                 <br />
               </div>
@@ -50,26 +50,26 @@ const Profile = () => {
 
           <div className="col">
             <div className="First-col">
-              <div className="row">
+              <div className="prow">
                 Taille : <b>175cm</b>
                 <br />
               </div>
-              <div className="row">
+              <div className="prow">
                 Poids : <b>78.4kg</b>
                 <br />
               </div>
-              <div className="row">
+              <div className="prow">
                 Age : <b>35ans</b>
                 <br />
               </div>
             </div>
 
             <div className="second-col">
-              <div className="row">
+              <div className="prow">
                 Couverture : <b>CNSS</b>
                 <br />
               </div>
-              <div className="row">
+              <div className="prow">
                 Poids ideal : <b>75kg</b>
                 <br />
               </div>

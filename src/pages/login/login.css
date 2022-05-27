@@ -19,8 +19,6 @@
   border: 0.5px solid #fff;
 }
 
-
-
 .login-input {
   height: 46px;
   background: none;
@@ -33,7 +31,7 @@
   border-radius: 10px;
   padding-left: 14px;
 }
- .submit-login {
+.submit-login {
   height: 46px;
   background: none;
   outline: none;
@@ -53,7 +51,7 @@
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
- .login-input:not(input[type="submit"]) {
+.login-input:not(input[type="submit"]) {
   width: calc(100% - 14px);
 }
 
@@ -61,7 +59,6 @@
   color: #fff;
   font-size: 18px;
 }
-
 
 .submit-login:hover {
   transition: all 0.3s ease-in-out;

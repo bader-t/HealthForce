@@ -1,26 +1,26 @@
-.profile{
-    margin: 20px 200px;
+.profile {
+  margin: 20px 200px;
 }
-.col{
-    display:flex;
+.col {
+  display: flex;
 }
-.second-col{
-    margin-left:100px;
+.second-col {
+  margin-left: 100px;
 }
-.row{
-    margin-bottom:30px;
+.prow {
+  margin-bottom: 30px;
 }
-b{
-    margin-left:20px;
+b {
+  margin-left: 20px;
 }
 
 .card-info {
   min-height: 250px;
-  min-width:70%;
+  min-width: 70%;
   box-shadow: 3px 5px 6px grey;
   background-color: white;
-  padding : 10px 20px;
-  margin-bottom:30px;
+  padding: 10px 20px;
+  margin-bottom: 30px;
 }
 
 h2 {
