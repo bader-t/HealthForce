@@ -17,11 +17,10 @@ function Signup() {
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [telephone, setTelephone] = useState("");
   const [genre, setGenre] = useState("");
   const [temps, setTemps] = useState("08:00");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(new Date());
   const [rdv, onChangeRDV] = useState(new Date());
   const [message, setMessage] = useState("");
 
@@ -47,18 +46,14 @@ function Signup() {
     setTemps(temps);
   };
   const onChangeDate = (e) => {
-    const date = e.target.value;
+    const date = new Date(e.target.value);
     setDate(date);
-  };
-  const onChangePassword = (e) => {
-    const password = e.target.value;
-    setPassword(password);
   };
 
   const handleRegister = (e) => {
     e.preventDefault();
     setMessage("");
-    AuthService.register(username, email, password, telephone, date, genre).then(
+    AuthService.register(username, email, telephone, date, genre).then(
       (response) => {
         setMessage(response.data.message);
         navigate("/login");
@@ -131,13 +126,6 @@ function Signup() {
                 name="date"
                 onChange={onChangeDate}
               />
-              <input
-                className="login-input"
-                type="password"
-                name="password"
-                placeholder="password.."
-                onChange={onChangePassword}
-              />
             </div>
 
             <div className="row-radio">
@@ -189,6 +177,9 @@ function Signup() {
 
             <input name="00N8d00000CdSbQ" type="hidden" value={rdv.getDate() + "/" + (rdv.getMonth() + 1) + "/"
               + rdv.getFullYear() + ", " + temps} />
+            <input name="lead_source" type="hidden" value="Web" />
+            <input name="00N8d00000CeEwD" type="hidden" value={date.getDate() + "/" + (date.getMonth() + 1) + "/"
+              + date.getFullYear()} />
 
             <input className="submit-login" name="submit" type="submit" value="S'inscrire" />
           </div>
