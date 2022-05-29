@@ -23,3 +23,9 @@ input[type="radio"] {
   filter: invert(1);
   padding-right: 10px;
 }
+
+.card-container {
+  padding-top: 460px;
+  height: calc(100vh - 70px);
+  overflow-y: auto;
+}
