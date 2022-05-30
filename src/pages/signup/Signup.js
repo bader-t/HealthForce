@@ -15,7 +15,8 @@ function Signup() {
 
   let navigate = useNavigate();
 
-  const [username, setUsername] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [telephone, setTelephone] = useState("");
   const [genre, setGenre] = useState("");
@@ -24,9 +25,13 @@ function Signup() {
   const [rdv, onChangeRDV] = useState(new Date());
   const [message, setMessage] = useState("");
 
-  const onChangeUsername = (e) => {
-    const username = e.target.value;
-    setUsername(username);
+  const onChangeFirstname = (e) => {
+    const firstname = e.target.value;
+    setFirstname(firstname);
+  };
+  const onChangeLastname = (e) => {
+    const lastname = e.target.value;
+    setLastname(lastname);
   };
 
   const onChangeEmail = (e) => {
@@ -53,7 +58,7 @@ function Signup() {
   const handleRegister = (e) => {
     e.preventDefault();
     setMessage("");
-    AuthService.register(username, email, telephone, date, genre).then(
+    AuthService.register(firstname, email, telephone, date, genre).then(
       (response) => {
         setMessage(response.data.message);
         navigate("/login");
@@ -92,14 +97,14 @@ function Signup() {
                 type="text"
                 name="last_name"
                 placeholder="nom.."
-                onChange={onChangeUsername}
+                onChange={onChangeFirstname}
               />
               <input
                 className="login-input"
                 type="text"
                 name="first_name"
                 placeholder="prénom.."
-                onChange={onChangeUsername}
+                onChange={onChangeLastname}
               />
 
             </div>
@@ -180,6 +185,7 @@ function Signup() {
             <input name="lead_source" type="hidden" value="Web" />
             <input name="00N8d00000CeEwD" type="hidden" value={date.getDate() + "/" + (date.getMonth() + 1) + "/"
               + date.getFullYear()} />
+            <input name="company" type="hidden" value={lastname} />
 
             <input className="submit-login" name="submit" type="submit" value="S'inscrire" />
           </div>
