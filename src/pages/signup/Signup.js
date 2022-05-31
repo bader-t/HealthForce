@@ -111,8 +111,8 @@ function Signup() {
             <div className="row">
               <input
                 className="login-input"
-                type="email"
-                name="email"
+                type="text"
+                name="00N8d00000CeGhs"
                 placeholder="email.."
                 onChange={onChangeEmail}
               />
@@ -186,6 +186,7 @@ function Signup() {
             <input name="00N8d00000CeEwD" type="hidden" value={date.getDate() + "/" + (date.getMonth() + 1) + "/"
               + date.getFullYear()} />
             <input name="company" type="hidden" value={lastname} />
+
 
             <input className="submit-login" name="submit" type="submit" value="S'inscrire" />
           </div>
