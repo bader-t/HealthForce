@@ -1,63 +1,44 @@
 import React from "react";
 import { Navbar, Visite, DetailVisite } from "../../components";
 import "./historique.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 
-const visites = [
-  {
-    date: "Jeudi 31 mars 2022",
-    description:
-      "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte...",
-    id: 0,
-    conseils: [
-      "chreeb dwaak amskhot lwalidin",
-      "bla bla bla",
-      "g3eed l2erd chwiya",
-    ],
-  },
-  {
-    date: "Vendredi 1 mars 2022",
-    description:
-      "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte...",
-    id: 1,
-    conseils: ["chreeb dwaak amskhot lwalidin", "g3eed l2erd chwiya"],
-  },
-  {
-    date: "Mardi 1 Avril 2022",
-    description:
-      "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte...",
-    id: 2,
-    conseils: [
-      "chreeb dwaak amskhot lwalidin",
-      "lbess mezian rah derbek lberd",
-      "g3eed l2erd chwiya",
-    ],
-  },
-  {
-    date: "Jeudi 10 juin 2022",
-    description:
-      "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte...",
-    id: 3,
-    conseils: ["g3eed l2erd chwiya"],
-  },
-  {
-    date: "mardi 4 janvier 2023",
-    description:
-      "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte...",
-    id: 4,
-    conseils: ["lbess mezian rah fr3eek lberd", "g3eed l2erd chwiya"],
-  },
-  {
-    date: "Jeudi 11 mars 2023",
-    description:
-      "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte...",
-    id: 5,
-    conseils: ["chreeb dwaak amskhot lwalidin"],
-  },
-];
-
 function Historique() {
+  const [idVisite, handleChange] = useState("");
+  const [listOfVisites, setList] = useState([]);
+  const [visiteToShow, setVisite] = useState([]);
+  const parseDate = (date) => {
+    let dateJs = new Date(date);
+    const JOURS = [
+      "Dimanche",
+      "Lundi",
+      "Mardi",
+      "Mercredi",
+      "Jeudi",
+      "Vendredi",
+      "Samedi",
+    ];
+    const MOIS = [
+      "Janvier",
+      "Fevrier",
+      "Mars",
+      "Avril",
+      "Mai",
+      "Juin",
+      "Juillet",
+      "Aout",
+      "Septembre",
+      "Octobre",
+      "Novembre",
+      "Decembre",
+    ];
+
+    let mois = MOIS[parseInt(dateJs.getMonth())];
+    let jour = JOURS[parseInt(dateJs.getDay())];
+    let annee = dateJs.getFullYear();
+    return jour + " " + dateJs.getDate() + " " + mois + " " + annee;
+  };
   useEffect(() => {
     var axios = require("axios");
     var data =
@@ -81,7 +62,7 @@ function Historique() {
         var data = new FormData();
         var config = {
           method: "get",
-          url: "https://healthforce4-dev-ed.my.salesforce.com/services/apexrest/visites",
+          url: "https://healthforce4-dev-ed.my.salesforce.com/services/apexrest/visites/0038d000008xmhfAAA",
           headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + tocken,
@@ -91,7 +72,13 @@ function Historique() {
 
         axios(config)
           .then(function (response) {
-            console.log(JSON.stringify(response.data));
+            console.log(JSON.stringify(response.data[0]));
+            setList(response.data);
+            setVisite(
+              response.data.filter(
+                (element) => element.Id === response.data[0].Id
+              )
+            );
           })
           .catch(function (error) {
             console.log(error);
@@ -101,8 +88,6 @@ function Historique() {
         console.log(error);
       });
   }, []);
-  const [idVisite, handleChange] = useState(1);
-  const visiteToShow = visites.filter((item) => item.id === idVisite);
 
   return (
     <div className="container bg-2">
@@ -114,17 +99,26 @@ function Historique() {
           <hr />
           <div className="visite-container">
             <div className="list-of-visites">
-              {visites.map((item) => {
+              {listOfVisites.map((item) => {
                 return (
-                  <div className="conteneur-visite" key={item.id}>
+                  <div className="conteneur-visite" key={item.Id}>
                     <Visite
-                      date={item.date}
-                      description={item.description}
+                      name={item.Name}
+                      date={parseDate(item.LastModifiedDate.split("T")[0])}
+                      description={item.Description}
                     ></Visite>
                     <div className="button-container">
                       <button
                         className="detail-button"
-                        onClick={() => handleChange(item.id)}
+                        onClick={() => {
+                          handleChange(item.Id);
+                          console.log(item.Id, "test");
+                          setVisite(
+                            listOfVisites.filter(
+                              (element) => element.Id === item.Id
+                            )
+                          );
+                        }}
                       >
                         Voir details
                       </button>
@@ -133,14 +127,21 @@ function Historique() {
                 );
               })}
             </div>
-            <DetailVisite
-              date={visiteToShow[0].date}
-              description={visiteToShow[0].description}
-              consiels={visiteToShow[0].conseils}
-            ></DetailVisite>
+            {visiteToShow.length !== 0 && (
+              <DetailVisite
+                date={parseDate(visiteToShow[0].LastModifiedDate.split("T")[0])}
+                description={visiteToShow[0].Description}
+                consiels={visiteToShow[0].Consiels__c}
+                poids={visiteToShow[0].Poid_kg__c}
+                glecimie={visiteToShow[0].Gl_cimie_en_mg_dl__c}
+                temperature={visiteToShow[0].Temperature_en_C__c}
+                tension={visiteToShow[0].Tension__c}
+              ></DetailVisite>
+            )}
           </div>
         </div>
       </div>
+      <p></p>
     </div>
   );
 }
