@@ -11,69 +11,48 @@ const Profile = () => {
       <Navbar active="profile" status="authentified"></Navbar>
       <div className="profile">
         <div className="card-info">
-          <h2>Information Generale</h2>
+          <h2>Information Personelle</h2>
 
           <div className="col">
             <div className="First-col">
               <div className="prow">
-                Nom complet : <b>{user.username}</b>
+                Nom complet :{" "}
+                <b>
+                  {user.first_name} {user.last_name}
+                </b>
                 <br />
               </div>
               <div className="prow">
-                Date de naissance : <b>{user.date}</b>
+                Date de naissance : <b>{user.birth_date}</b>
+                <br />
+              </div>
+
+              <div className="prow">
+                Assurance médicale : <b>{user.assurance_medical}</b>
                 <br />
               </div>
               <div className="prow">
-                Sexe : <b>{user.genre}</b>
+                Email : <b>{user.email}</b>
                 <br />
               </div>
             </div>
             <div className="second-col">
               <div className="prow">
-                Telephone : <b>{user.telephone}</b>
+                Telephone : <b>{user.phone}</b>
                 <br />
               </div>
               <div className="prow">
-                Adress : <b>Marrakech-Guiliz</b>
+                Adress : <b>{user.adress}</b>
                 <br />
               </div>
               <div className="prow">
-                CIN : <b>A456739</b>
-                <br />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="card-info">
-          <h2>Informations medical</h2>
-
-          <div className="col">
-            <div className="First-col">
-              <div className="prow">
-                Taille : <b>175cm</b>
+                Num de l'assurance : <b>{user.num_assurance}</b>
                 <br />
               </div>
               <div className="prow">
-                Poids : <b>78.4kg</b>
+                CIN : <b>{user.cin}</b>
                 <br />
               </div>
-              <div className="prow">
-                Age : <b>35ans</b>
-                <br />
-              </div>
-            </div>
-
-            <div className="second-col">
-              <div className="prow">
-                Couverture : <b>CNSS</b>
-                <br />
-              </div>
-              <div className="prow">
-                Poids ideal : <b>75kg</b>
-                <br />
-              </div>
-
             </div>
           </div>
         </div>

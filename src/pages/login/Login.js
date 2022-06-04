@@ -59,7 +59,7 @@ function Login() {
 
           <input
             type="text"
-            placeholder="nom complet.."
+            placeholder="E-mail.."
             name="username"
             value={username}
             onChange={onChangeUsername}

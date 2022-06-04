@@ -26,7 +26,9 @@ function Navbar(props) {
     setCurrentUser(undefined);
   };
 
-  const profile = currentUser ? currentUser.username : "";
+  const profile = currentUser
+    ? currentUser.first_name + currentUser.last_name
+    : "";
   const authentified = [
     {
       label: "Acceuil",

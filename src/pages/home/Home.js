@@ -26,7 +26,10 @@ const Home = () => (
         &nbsp;&nbsp;+212 5 23 24 12 45
       </div>
       <div>
-        réclamation <img src="./assets/chevron.svg" alt="chevron" />
+        réclamation
+        <Link to="/question">
+          <img src="./assets/chevron.svg" alt="chevron" />
+        </Link>
       </div>
     </div>
   </div>
