@@ -2,6 +2,10 @@
   "name": "healthforce",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^12.1.4",
@@ -13,7 +17,7 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
-    "proxy":"https://login.salesforce.com",
+    "proxy": "https://login.salesforce.com",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
