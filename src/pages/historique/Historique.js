@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Visite, DetailVisite } from "../../components";
 import "./historique.css";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import AuthService from "../../services/auth.service";
 

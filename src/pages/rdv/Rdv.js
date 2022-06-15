@@ -39,10 +39,10 @@ function Rdv() {
 
           <input type="hidden" name="oid" value="00D8d000004IxgI" />
           <input type="hidden" name="retURL" value="https://healthforce-8640c.web.app/rdv" />
+
+          <input type="hidden" name="first_name" value={"#existant# " + user.first_name} />
           <input type="hidden" name="last_name" value={user.last_name} />
-          <input type="hidden" name="first_name" value={user.first_name} />
           <input type="hidden" name="00N8d00000CeGhs" value={user.email} />
-          <input type="hidden" name="email" value={user.email} />
           <input type="hidden" name="phone" value={user.phone} />
           <input name="company" type="hidden" value={user.last_name} />
           <input name="lead_source" type="hidden" value="Web" />
@@ -77,9 +77,9 @@ function Rdv() {
                 <input type="radio" name="temps" value="14:00" onChange={onChangeTemps} />
                 Apres-midi
               </div>
-              {/* <input name="00N8d00000CdSbQ" type="hidden" value={rdv.getDate() + "/" + (rdv.getMonth() + 1) + "/"
-                + rdv.getFullYear() + ", " + temps} /> */}
-              <input name="00N8d00000CdSbQ" type="hidden" value={"20/06/2022, " + temps} />
+              <input name="00N8d00000CdSbQ" type="hidden" value={rdv.getDate() + "/" + (rdv.getMonth() + 1) + "/"
+                + rdv.getFullYear() + ", " + temps} />
+
 
               <div className="Rdv-form">
                 <input
