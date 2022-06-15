@@ -42,7 +42,7 @@ const Profile = () => {
                 <br />
               </div>
               <div className="prow">
-                Adress : <b>{user.adress}</b>
+                Adresse : <b>{user.adress}</b>
                 <br />
               </div>
               <div className="prow">

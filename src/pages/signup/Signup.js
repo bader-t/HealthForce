@@ -89,7 +89,7 @@ function Signup() {
             <h1>S'inscrire</h1>
             <hr />
             <input type="hidden" name="oid" value="00D8d000004IxgI" />
-            <input type="hidden" name="retURL" value="http://127.0.0.1:3000/login" />
+            <input type="hidden" name="retURL" value="https://healthforce-8640c.web.app/login" />
             <div className="row">
 
               <input

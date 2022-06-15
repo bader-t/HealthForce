@@ -27,7 +27,7 @@ function Navbar(props) {
   };
 
   const profile = currentUser
-    ? currentUser.first_name + currentUser.last_name
+    ? currentUser.first_name + " " + currentUser.last_name
     : "";
   const authentified = [
     {
