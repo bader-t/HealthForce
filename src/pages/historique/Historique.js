@@ -6,7 +6,6 @@ import axios from "axios";
 import AuthService from "../../services/auth.service";
 
 function Historique() {
-
   const [idVisite, handleChange] = useState("");
   const [listOfVisites, setList] = useState([]);
   const [visiteToShow, setVisite] = useState([]);
@@ -44,15 +43,17 @@ function Historique() {
 
   useEffect(() => {
     const user = AuthService.getCurrentUser();
-    let url = "https://healthforce4-dev-ed.my.salesforce.com/services/apexrest/visites/" + user.id;
-    console.log('url', url)
+    let url =
+      "https://healthforce4-dev-ed.my.salesforce.com/services/apexrest/visites/" +
+      user.id;
+    console.log("url", url);
     var axios = require("axios");
     var data =
       "grant_type=password&client_id=3MVG9DREgiBqN9WldxY6Si.pmECMxRaJPIwYtCUX49AMTbWpVlPj4vUzTHRKHQdpj7k9_bvI5eCUXoxDdFjy5&client_secret=D9B701D4A2BD6510AB7BC6B1AE11B688A7A63F6F451048450ECB57187CA44AAD\r\n&username=healthforce8@gmail.com&password=healthforce@@1Bf6YIt9844TiLMt2t2V81JQh\r\n";
 
     var config = {
       method: "post",
-      url: "https://login.salesforce.com/services/oauth2/token",
+      url: "services/oauth2/token",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },

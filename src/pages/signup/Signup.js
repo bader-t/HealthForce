@@ -12,7 +12,6 @@ const dates = [
 ];
 
 function Signup() {
-
   let navigate = useNavigate();
 
   const [firstname, setFirstname] = useState("");
@@ -73,10 +72,8 @@ function Signup() {
           error.toString();
 
         setMessage(resMessage);
-
       }
     );
-
   };
   console.log(message);
 
@@ -84,14 +81,21 @@ function Signup() {
     <div className="container bg-1">
       <Navbar active="signup" status="unauthentified"></Navbar>
       <div className="card-container">
-        <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" className="wrapper">
+        <form
+          action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8"
+          method="POST"
+          className="wrapper"
+        >
           <div className="card">
             <h1>S'inscrire</h1>
             <hr />
             <input type="hidden" name="oid" value="00D8d000004IxgI" />
-            <input type="hidden" name="retURL" value="https://healthforce-8640c.web.app/login" />
+            <input
+              type="hidden"
+              name="retURL"
+              value="https://healthforce-8640c.web.app/login"
+            />
             <div className="row">
-
               <input
                 className="login-input"
                 type="text"
@@ -106,7 +110,6 @@ function Signup() {
                 placeholder="prénom.."
                 onChange={onChangeLastname}
               />
-
             </div>
             <div className="row">
               <input
@@ -150,12 +153,25 @@ function Signup() {
               Homme
             </div>
             <div className="row">
-
-              <p className="subtitle">Selectionner la date<br />
-                <input type="radio" name="temps" value="08:00" onChange={onChangeTemps} />
-                Matin<br />
-                <input type="radio" name="temps" value="14:00" onChange={onChangeTemps} />
-                Apres-midi </p>
+              <p className="subtitle">
+                Selectionner la date
+                <br />
+                <input
+                  type="radio"
+                  name="temps"
+                  value="08:00"
+                  onChange={onChangeTemps}
+                />
+                Matin
+                <br />
+                <input
+                  type="radio"
+                  name="temps"
+                  value="14:00"
+                  onChange={onChangeTemps}
+                />
+                Apres-midi{" "}
+              </p>
 
               <Calendar
                 onChange={onChangeRDV}
@@ -174,26 +190,54 @@ function Signup() {
             </div>
             <div className="row">
               <p className="subtitle">Rendez-vous pour:</p>
-              <select id="00N8d00000CdSbf" name="00N8d00000CdSbf" title="Rendez-vous pour"><option value="">--None--</option><option value="Consultation">Consultation</option>
+              <select
+                id="00N8d00000CdSbf"
+                name="00N8d00000CdSbf"
+                title="Rendez-vous pour"
+              >
+                <option value="">--None--</option>
+                <option value="Consultation">Consultation</option>
                 <option value="Operation">Operation</option>
                 <option value="Traitement">Traitement</option>
               </select>
             </div>
 
-            <input name="00N8d00000CdSbQ" type="hidden" value={rdv.getDate() + "/" + (rdv.getMonth() + 1) + "/"
-              + rdv.getFullYear() + ", " + temps} />
+            <input
+              name="00N8d00000CdSbQ"
+              type="hidden"
+              value={
+                rdv.getDate() +
+                "/" +
+                (rdv.getMonth() + 1) +
+                "/" +
+                rdv.getFullYear() +
+                ", " +
+                temps
+              }
+            />
             <input name="lead_source" type="hidden" value="Web" />
-            <input name="00N8d00000CeEwD" type="hidden" value={date.getDate() + "/" + (date.getMonth() + 1) + "/"
-              + date.getFullYear()} />
+            <input
+              name="00N8d00000CeEwD"
+              type="hidden"
+              value={
+                date.getDate() +
+                "/" +
+                (date.getMonth() + 1) +
+                "/" +
+                date.getFullYear()
+              }
+            />
             <input name="company" type="hidden" value={lastname} />
 
-
-            <input className="submit-login" name="submit" type="submit" value="S'inscrire" />
+            <input
+              className="submit-login"
+              name="submit"
+              type="submit"
+              value="S'inscrire"
+            />
           </div>
         </form>
       </div>
-
-
     </div>
   );
 }
