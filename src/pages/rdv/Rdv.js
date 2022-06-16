@@ -6,6 +6,13 @@ import Calendar from "react-calendar";
 import { useState } from "react";
 import "react-calendar/dist/Calendar.css";
 import AuthService from "../../services/auth.service";
+import { TimePickerComponent } from "@syncfusion/ej2-react-calendars";
+import { registerLicense } from "@syncfusion/ej2-base";
+
+registerLicense(
+  "ORg4AjUWIQA/Gnt2VVhhQlFaclhJXGFWfVJpTGpQdk5xdV9DaVZUTWY/P1ZhSXxRdkNiXH1fcHdUQmhdVEc="
+);
+
 const dates = [
   new Date(2022, 3, 7),
   new Date(2022, 3, 25),
@@ -16,13 +23,13 @@ function Rdv() {
   const user = AuthService.getCurrentUser();
   const [temps, setTemps] = useState("08:00");
   const [rdv, onChangeRDV] = useState(new Date());
+  const minTime = new Date("01/01/2022 09:00 AM");
+  const maxTime = new Date(" 01/01/2022 02:00 PM");
 
   const onChangeTemps = (e) => {
-    const temps = e.target.value;
+    const temps = e.target.value.getHours();
     setTemps(temps);
-    console.log(
-      rdv.getDate() + "/" + (rdv.getMonth() + 1) + "/" + rdv.getFullYear()
-    );
+    console.log(temps);
   };
 
   return (
@@ -45,10 +52,14 @@ function Rdv() {
             name="retURL"
             value="https://healthforce-8640c.web.app/rdv"
           />
+
+          <input
+            type="hidden"
+            name="first_name"
+            value={"#existant# " + user.first_name}
+          />
           <input type="hidden" name="last_name" value={user.last_name} />
-          <input type="hidden" name="first_name" value={user.first_name} />
           <input type="hidden" name="00N8d00000CeGhs" value={user.email} />
-          <input type="hidden" name="email" value={user.email} />
           <input type="hidden" name="phone" value={user.phone} />
           <input name="company" type="hidden" value={user.last_name} />
           <input name="lead_source" type="hidden" value="Web" />
@@ -75,6 +86,7 @@ function Rdv() {
             />
 
             <div className="column-2">
+              {/*
               <div className="row-radioRdv">
                 <input
                   type="radio"
@@ -91,13 +103,30 @@ function Rdv() {
                 />
                 Apres-midi
               </div>
-              {/* <input name="00N8d00000CdSbQ" type="hidden" value={rdv.getDate() + "/" + (rdv.getMonth() + 1) + "/"
-                + rdv.getFullYear() + ", " + temps} /> */}
               <input
                 name="00N8d00000CdSbQ"
                 type="hidden"
-                value={"20/06/2022, " + temps}
-              />
+                value={
+                  rdv.getDate() +
+                  "/" +
+                  (rdv.getMonth() + 1) +
+                  "/" +
+                  rdv.getFullYear() +
+                  ", " +
+                  temps
+                }
+              />*/}
+              <div>
+                <TimePickerComponent
+                  placeholder="Select a time"
+                  value={temps}
+                  format="HH:mm"
+                  step={60}
+                  onChange={onChangeTemps}
+                  max={maxTime}
+                  min={minTime}
+                ></TimePickerComponent>
+              </div>
 
               <div className="Rdv-form">
                 <input
