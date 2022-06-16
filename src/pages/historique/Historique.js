@@ -53,7 +53,7 @@ function Historique() {
 
     var config = {
       method: "post",
-      url: "services/oauth2/token",
+      url: "https://login.salesforce.com/services/oauth2/token",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
