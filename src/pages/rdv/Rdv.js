@@ -30,7 +30,6 @@ function Rdv() {
       end: element,
     });
   };
-
   const myLabels = React.useMemo(() => {
     return [
       {
@@ -40,7 +39,6 @@ function Rdv() {
       },
     ];
   }, []);
-
   useEffect(() => {
     let url =
       "https://healthforce4-dev-ed.my.salesforce.com/services/apexrest/rendezVous";
@@ -128,7 +126,6 @@ function Rdv() {
 
           <div className="titles">
             <p className="subtitle">Selectionner la date </p>
-            <p className="subtitle">Selectionner le temps </p>
           </div>
 
           <div className="row">

@@ -1,15 +1,17 @@
-import { React, useState } from "react";
-import { Calendar } from "react-calendar";
+import { useState, useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Navbar } from "../../components";
 import AuthService from "../../services/auth.service";
 import "./signup.css";
+import "@mobiscroll/react/dist/css/mobiscroll.min.css";
+import { Datepicker, setOptions, localeFr } from "@mobiscroll/react";
 
-const dates = [
-  new Date(2022, 3, 7),
-  new Date(2022, 3, 25),
-  new Date(2022, 4, 8),
-];
+setOptions({
+  locale: localeFr,
+  theme: "ios",
+  themeVariant: "light",
+});
 
 function Signup() {
   let navigate = useNavigate();
@@ -76,6 +78,85 @@ function Signup() {
     );
   };
   console.log(message);
+  /////////////////////////////////////////////////////
+  const [listOfRendezVous, setList] = useState([]);
+  let toDay = new Date();
+  toDay.setTime(toDay.getTime() + 12 * 3600 * 1000);
+
+  const user = AuthService.getCurrentUser();
+  const changeDate = (e) => {
+    onChangeRDV(e.value);
+    console.log(rdv);
+  };
+  const setlistOfRendezVous = (element) => {
+    listOfRendezVous.push({
+      start: element,
+      end: element,
+    });
+  };
+
+  const myLabels = React.useMemo(() => {
+    return [
+      {
+        start: "2022-06-26",
+        textColor: "#e1528f",
+        title: "",
+      },
+    ];
+  }, []);
+
+  useEffect(() => {
+    let url =
+      "https://healthforce4-dev-ed.my.salesforce.com/services/apexrest/rendezVous";
+    var axios = require("axios");
+    var data =
+      "grant_type=password&client_id=3MVG9DREgiBqN9WldxY6Si.pmECMxRaJPIwYtCUX49AMTbWpVlPj4vUzTHRKHQdpj7k9_bvI5eCUXoxDdFjy5&client_secret=D9B701D4A2BD6510AB7BC6B1AE11B688A7A63F6F451048450ECB57187CA44AAD\r\n&username=healthforce8@gmail.com&password=healthforce@@1Bf6YIt9844TiLMt2t2V81JQh\r\n";
+
+    var config = {
+      method: "post",
+      url: "services/oauth2/token",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data.access_token));
+        var tocken = response.data.access_token;
+        var axios = require("axios");
+        var FormData = require("form-data");
+        var data = new FormData();
+        var config = {
+          method: "get",
+          url: url,
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + tocken,
+          },
+          data: data,
+        };
+
+        axios(config)
+          .then(function (response) {
+            let i = 0;
+            for (i; i < response.data.length; i++) {
+              console.log(
+                JSON.stringify(response.data[i].Date_de_rendez_vous__c)
+              );
+              if (response.data[i].Date_de_rendez_vous__c !== undefined)
+                setlistOfRendezVous(response.data[i].Date_de_rendez_vous__c);
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <div className="container bg-1">
@@ -153,40 +234,20 @@ function Signup() {
               Homme
             </div>
             <div className="row">
-              <p className="subtitle">
-                Selectionner la date
-                <br />
-                <input
-                  type="radio"
-                  name="temps"
-                  value="08:00"
-                  onChange={onChangeTemps}
+              <div>
+                <Datepicker
+                  controls={["calendar", "timegrid"]}
+                  min={toDay}
+                  max="2022-12-16T00:00"
+                  minTime="09:00 AM"
+                  maxTime="14:00 PM"
+                  stepMinute={30}
+                  labels={myLabels}
+                  invalid={listOfRendezVous}
+                  onChange={changeDate}
+                  dataTimezone="utc+1"
                 />
-                Matin
-                <br />
-                <input
-                  type="radio"
-                  name="temps"
-                  value="14:00"
-                  onChange={onChangeTemps}
-                />
-                Apres-midi{" "}
-              </p>
-
-              <Calendar
-                onChange={onChangeRDV}
-                value={rdv}
-                tileDisabled={({ date }) =>
-                  dates.some(
-                    (disabledDate) =>
-                      (date.getFullYear() === disabledDate.getFullYear() &&
-                        date.getMonth() === disabledDate.getMonth() &&
-                        date.getDate() === disabledDate.getDate()) ||
-                      date.getDay() === 0 ||
-                      date.getDay() === 6
-                  )
-                }
-              />
+              </div>
             </div>
             <div className="row">
               <p className="subtitle">Rendez-vous pour:</p>
