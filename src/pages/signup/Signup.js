@@ -21,7 +21,6 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [telephone, setTelephone] = useState("");
   const [genre, setGenre] = useState("");
-  const [temps, setTemps] = useState("08:00");
   const [date, setDate] = useState(new Date());
   const [rdv, onChangeRDV] = useState(new Date());
   const [message, setMessage] = useState("");
@@ -47,10 +46,7 @@ function Signup() {
     const genre = e.target.value;
     setGenre(genre);
   };
-  const onChangeTemps = (e) => {
-    const temps = e.target.value;
-    setTemps(temps);
-  };
+
   const onChangeDate = (e) => {
     const date = new Date(e.target.value);
     setDate(date);
@@ -85,8 +81,16 @@ function Signup() {
 
   const user = AuthService.getCurrentUser();
   const changeDate = (e) => {
+
+    console.log(rdv.getDate());
+    console.log('first', rdv.getDate() +
+      "/" +
+      (rdv.getMonth() + 1) +
+      "/" +
+      rdv.getFullYear() +
+      ", " +
+      rdv.getHours() + ":" + rdv.getMinutes())
     onChangeRDV(e.value);
-    console.log(rdv);
   };
   const setlistOfRendezVous = (element) => {
     listOfRendezVous.push({
@@ -157,6 +161,7 @@ function Signup() {
         console.log(error);
       });
   }, []);
+
 
   return (
     <div className="container bg-1">
@@ -274,7 +279,7 @@ function Signup() {
                 "/" +
                 rdv.getFullYear() +
                 ", " +
-                temps
+                rdv.getHours() + ":" + rdv.getMinutes()
               }
             />
             <input name="lead_source" type="hidden" value="Web" />
