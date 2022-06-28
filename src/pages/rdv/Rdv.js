@@ -19,10 +19,17 @@ function Rdv() {
   toDay.setTime(toDay.getTime() + 12 * 3600 * 1000);
 
   const user = AuthService.getCurrentUser();
-  const [rdv, onChangeRDV] = useState();
+  const [rdv, onChangeRDV] = useState(new Date());
   const changeDate = (e) => {
+
+    console.log(rdv.getDate() +
+      "/" +
+      (rdv.getMonth() + 1) +
+      "/" +
+      rdv.getFullYear() +
+      ", " +
+      rdv.getHours() + ":" + rdv.getMinutes());
     onChangeRDV(e.value);
-    console.log(rdv);
   };
   const setlistOfRendezVous = (element) => {
     listOfRendezVous.push({
@@ -123,6 +130,19 @@ function Rdv() {
           <input type="hidden" name="phone" value={user.phone} />
           <input name="company" type="hidden" value={user.last_name} />
           <input name="lead_source" type="hidden" value="Web" />
+          <input
+            name="00N8d00000CdSbQ"
+            type="hidden"
+            value={
+              rdv.getDate() +
+              "/" +
+              (rdv.getMonth() + 1) +
+              "/" +
+              rdv.getFullYear() +
+              ", " +
+              rdv.getHours() + ":" + rdv.getMinutes()
+            }
+          />
 
           <div className="titles">
             <p className="subtitle">Selectionner la date </p>
