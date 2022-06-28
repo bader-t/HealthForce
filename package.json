@@ -2,7 +2,6 @@
     "name": "healthforce",
     "version": "0.1.0",
     "private": true,
-    "proxy": "https://login.salesforce.com",
     "dependencies": {
         "@mobiscroll/react": "https://npm.mobiscroll.com/@mobiscroll/react-trial/-/react-trial-5.17.1.tgz",
         "@syncfusion/ej2-react-calendars": "^20.1.58",
