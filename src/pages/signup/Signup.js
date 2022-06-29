@@ -81,15 +81,19 @@ function Signup() {
 
   const user = AuthService.getCurrentUser();
   const changeDate = (e) => {
-
     console.log(rdv.getDate());
-    console.log('first', rdv.getDate() +
-      "/" +
-      (rdv.getMonth() + 1) +
-      "/" +
-      rdv.getFullYear() +
-      ", " +
-      rdv.getHours() + ":" + rdv.getMinutes())
+    console.log(
+      "first",
+      rdv.getDate() +
+        "/" +
+        (rdv.getMonth() + 1) +
+        "/" +
+        rdv.getFullYear() +
+        ", " +
+        rdv.getHours() +
+        ":" +
+        rdv.getMinutes()
+    );
     onChangeRDV(e.value);
   };
   const setlistOfRendezVous = (element) => {
@@ -162,7 +166,6 @@ function Signup() {
       });
   }, []);
 
-
   return (
     <div className="container bg-1">
       <Navbar active="signup" status="unauthentified"></Navbar>
@@ -179,7 +182,7 @@ function Signup() {
             <input
               type="hidden"
               name="retURL"
-              value="https://healthforce-8640c.web.app/login"
+              value="http://127.0.0.1:3000/login/"
             />
             <div className="row">
               <input
@@ -279,7 +282,9 @@ function Signup() {
                 "/" +
                 rdv.getFullYear() +
                 ", " +
-                rdv.getHours() + ":" + rdv.getMinutes()
+                rdv.getHours() +
+                ":" +
+                rdv.getMinutes()
               }
             />
             <input name="lead_source" type="hidden" value="Web" />

@@ -40,9 +40,6 @@ const DetailVisite = (props) => (
         <li>{props.consiels}</li>
       </div>
     </div>
-    <div className="footer-visite">
-      <button className="facture-button">Télécharger la facture</button>
-    </div>
   </div>
 );
 export default DetailVisite;

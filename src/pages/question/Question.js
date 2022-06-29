@@ -22,7 +22,11 @@ const Question = () => {
             method="POST"
           >
             <input type="hidden" name="orgid" value="00D8d000004IxgI" />
-            <input type="hidden" name="retURL" value="http://www.google.com" />
+            <input
+              type="hidden"
+              name="retURL"
+              value="http://127.0.0.1:3000/question/"
+            />
             <input
               id="email"
               value={user.email}

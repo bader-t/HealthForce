@@ -21,14 +21,17 @@ function Rdv() {
   const user = AuthService.getCurrentUser();
   const [rdv, onChangeRDV] = useState(new Date());
   const changeDate = (e) => {
-
-    console.log(rdv.getDate() +
-      "/" +
-      (rdv.getMonth() + 1) +
-      "/" +
-      rdv.getFullYear() +
-      ", " +
-      rdv.getHours() + ":" + rdv.getMinutes());
+    console.log(
+      rdv.getDate() +
+        "/" +
+        (rdv.getMonth() + 1) +
+        "/" +
+        rdv.getFullYear() +
+        ", " +
+        rdv.getHours() +
+        ":" +
+        rdv.getMinutes()
+    );
     onChangeRDV(e.value);
   };
   const setlistOfRendezVous = (element) => {
@@ -37,6 +40,12 @@ function Rdv() {
       end: element,
     });
   };
+  //////////////////////////////////////////////////////
+  function submitForm() {
+    var form = document.getElementById("salesforce_form");
+    form.action += "http://localhost:3000/rdv"; // notice the case
+    form.submit(); // submit the form
+  }
   const myLabels = React.useMemo(() => {
     return [
       {
@@ -117,7 +126,7 @@ function Rdv() {
           <input
             type="hidden"
             name="retURL"
-            value="https://healthforce-8640c.web.app/rdv"
+            value="http://127.0.0.1:3000/rdv/"
           />
 
           <input
@@ -140,7 +149,9 @@ function Rdv() {
               "/" +
               rdv.getFullYear() +
               ", " +
-              rdv.getHours() + ":" + rdv.getMinutes()
+              rdv.getHours() +
+              ":" +
+              rdv.getMinutes()
             }
           />
 
@@ -193,6 +204,7 @@ function Rdv() {
             name="submit"
             type="submit"
             value="Rendez-vous"
+            onClick={submitForm}
           />
         </form>
       </div>
